@@ -38,7 +38,7 @@ void init_adc(void){
 	ADMUX |=(1<<REFS0);
 	
 	// Entrada 0 de MUX ADC0 para el prelab entonces no se cambian los bits de mux
-	ADMUX |=(1<<ADLAR);
+	ADMUX |=(1<<MUX1)|(1<<MUX2)|(1<<ADLAR);
 	
 	//Encender ADC y  habilitar isr adc
 	ADCSRA=0;
@@ -49,6 +49,8 @@ void init_adc(void){
 	
 	//no se utilizara el estado B
 	ADCSRB=0;
+	
+	
 	//DIDRO=0;
 }
 

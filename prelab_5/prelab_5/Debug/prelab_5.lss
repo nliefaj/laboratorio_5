@@ -3,31 +3,31 @@ prelab_5.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000200  2**0
+  0 .data         00000000  00800100  00800100  00000216  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000018c  00000000  00000000  00000074  2**1
+  1 .text         000001a2  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000001  00800100  00800100  00000200  2**0
+  2 .bss          00000001  00800100  00800100  00000216  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000200  2**0
+  3 .comment      00000030  00000000  00000000  00000216  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000230  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000248  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000060  00000000  00000000  00000270  2**0
+  5 .debug_aranges 00000060  00000000  00000000  00000288  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000887  00000000  00000000  000002d0  2**0
+  6 .debug_info   00000887  00000000  00000000  000002e8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000076b  00000000  00000000  00000b57  2**0
+  7 .debug_abbrev 0000076b  00000000  00000000  00000b6f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000003ea  00000000  00000000  000012c2  2**0
+  8 .debug_line   000003f6  00000000  00000000  000012da  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000a4  00000000  00000000  000016ac  2**2
+  9 .debug_frame  000000a4  00000000  00000000  000016d0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000415  00000000  00000000  00001750  2**0
+ 10 .debug_str    00000415  00000000  00000000  00001774  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000090  00000000  00000000  00001b65  2**0
+ 11 .debug_loc    00000090  00000000  00000000  00001b89  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000040  00000000  00000000  00001bf5  2**0
+ 12 .debug_ranges 00000040  00000000  00000000  00001c19  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -82,7 +82,7 @@ Disassembly of section .text:
   80:	b2 07       	cpc	r27, r18
   82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
   84:	0e 94 61 00 	call	0xc2	; 0xc2 <main>
-  88:	0c 94 c4 00 	jmp	0x188	; 0x188 <_exit>
+  88:	0c 94 cf 00 	jmp	0x19e	; 0x19e <_exit>
 
 0000008c <__bad_interrupt>:
   8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -134,7 +134,7 @@ int main(void)
     {
 	updateDC(valor_pot1);
   cc:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
-  d0:	0e 94 be 00 	call	0x17c	; 0x17c <updateDC>
+  d0:	0e 94 c9 00 	call	0x192	; 0x192 <updateDC>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
@@ -252,26 +252,39 @@ void initPWM1(uint8_t invertido, uint16_t preescaler){
 			break;
 	}
 	
-	TCCR1A |=(1<<WGM12)|(1<<WGM10); //usar fast pwm de 8 bits 0xff siendo el top
+	TCCR1A |=(1<<WGM11)|(1<<WGM10);
  170:	e0 e8       	ldi	r30, 0x80	; 128
  172:	f0 e0       	ldi	r31, 0x00	; 0
  174:	80 81       	ld	r24, Z
- 176:	89 60       	ori	r24, 0x09	; 9
+ 176:	83 60       	ori	r24, 0x03	; 3
  178:	80 83       	st	Z, r24
- 17a:	08 95       	ret
+	TCCR1B |=(1<<WGM12)|(1<<WGM13);
+ 17a:	e1 e8       	ldi	r30, 0x81	; 129
+ 17c:	f0 e0       	ldi	r31, 0x00	; 0
+ 17e:	80 81       	ld	r24, Z
+ 180:	88 61       	ori	r24, 0x18	; 24
+ 182:	80 83       	st	Z, r24
+	
+	OCR1A=312;
+ 184:	88 e3       	ldi	r24, 0x38	; 56
+ 186:	91 e0       	ldi	r25, 0x01	; 1
+ 188:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 18c:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+ 190:	08 95       	ret
 
-0000017c <updateDC>:
+00000192 <updateDC>:
+	
 }
 
 void updateDC(uint8_t prc_duty){
 	OCR1A=prc_duty;
- 17c:	90 e0       	ldi	r25, 0x00	; 0
- 17e:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
- 182:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
- 186:	08 95       	ret
+ 192:	90 e0       	ldi	r25, 0x00	; 0
+ 194:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 198:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+ 19c:	08 95       	ret
 
-00000188 <_exit>:
- 188:	f8 94       	cli
+0000019e <_exit>:
+ 19e:	f8 94       	cli
 
-0000018a <__stop_program>:
- 18a:	ff cf       	rjmp	.-2      	; 0x18a <__stop_program>
+000001a0 <__stop_program>:
+ 1a0:	ff cf       	rjmp	.-2      	; 0x1a0 <__stop_program>

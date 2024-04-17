@@ -36,7 +36,11 @@ void initPWM1(uint8_t invertido, uint16_t preescaler){
 			break;
 	}
 	
-	TCCR1A |=(1<<WGM12)|(1<<WGM10); //usar fast pwm de 8 bits 0xff siendo el top
+	TCCR1A |=(1<<WGM11)|(1<<WGM10);
+	TCCR1B |=(1<<WGM12)|(1<<WGM13);
+	
+	OCR1A=312;
+	
 }
 
 void updateDC(uint8_t prc_duty){

@@ -180,7 +180,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x18c
+.text           0x00000000      0x1a2
  *(.vectors)
  .vectors       0x00000000       0x68 D:/microchip_studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -270,16 +270,16 @@ END GROUP
  .text.main     0x000000c2       0x26 main.o
                 0x000000c2                main
  .text.initPWM1
-                0x000000e8       0x94 pwm_1/pwm_1.o
+                0x000000e8       0xaa pwm_1/pwm_1.o
                 0x000000e8                initPWM1
  .text.updateDC
-                0x0000017c        0xc pwm_1/pwm_1.o
-                0x0000017c                updateDC
-                0x00000188                . = ALIGN (0x2)
+                0x00000192        0xc pwm_1/pwm_1.o
+                0x00000192                updateDC
+                0x0000019e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000188        0x0 d:/microchip_studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000188                _exit
-                0x00000188                exit
+ .fini9         0x0000019e        0x0 d:/microchip_studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000019e                _exit
+                0x0000019e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -298,11 +298,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000188        0x4 d:/microchip_studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000019e        0x4 d:/microchip_studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000018c                _etext = .
+                0x000001a2                _etext = .
 
-.data           0x00800100        0x0 load address 0x0000018c
+.data           0x00800100        0x0 load address 0x000001a2
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -323,8 +323,8 @@ END GROUP
                 0x00800100                valor_pot1
  *(COMMON)
                 0x00800101                PROVIDE (__bss_end, .)
-                0x0000018c                __data_load_start = LOADADDR (.data)
-                0x0000018c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000001a2                __data_load_start = LOADADDR (.data)
+                0x000001a2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800101        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -418,11 +418,11 @@ END GROUP
  .debug_abbrev  0x000005a2      0x140 main.o
  .debug_abbrev  0x000006e2       0x89 pwm_1/pwm_1.o
 
-.debug_line     0x00000000      0x3ea
+.debug_line     0x00000000      0x3f6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 D:/microchip_studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000134      0x1aa main.o
- .debug_line    0x000002de      0x10c pwm_1/pwm_1.o
+ .debug_line    0x000002de      0x118 pwm_1/pwm_1.o
 
 .debug_frame    0x00000000       0xa4
  *(.debug_frame)
