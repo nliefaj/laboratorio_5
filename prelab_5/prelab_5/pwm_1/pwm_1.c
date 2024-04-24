@@ -19,7 +19,7 @@ void initPWM1(uint8_t invertido, uint16_t preescaler){
 	}
 	
 	switch(preescaler){
-		case 1:
+		case 0:
 			TCCR1B |=(1<<CS10);
 			break;
 		case 8:
@@ -34,16 +34,22 @@ void initPWM1(uint8_t invertido, uint16_t preescaler){
 		case 1024:
 			TCCR1B |=(1<<CS12)|(1<<CS10); //preescaler de 1024 para un periodo máximo de 4 segundos
 			break;
+		default:
+			TCCR1B|=(1<<CS10);
 	}
 	
-	TCCR1A |=(1<<WGM11)|(1<<WGM10);
-	TCCR1B |=(1<<WGM12)|(1<<WGM13);
+	//FAST PWM 8 bits
+	TCCR1A |=(1<<WGM10);
+	TCCR1B |=(1<<WGM12);
 	
-	OCR1A=312;
+	//ICR1=155;
+	
+	
 	
 }
 
-void updateDC(uint8_t prc_duty){
+
+void updateDC1(uint8_t prc_duty){
 	OCR1A=prc_duty;
 	} 
 	

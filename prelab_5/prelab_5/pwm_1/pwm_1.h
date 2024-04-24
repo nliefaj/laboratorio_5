@@ -17,7 +17,7 @@
 //configurarpwm1 modo fast
 void initPWM1(uint8_t invertido, uint16_t preescaler);
 
-void updateDC(uint8_t prc_duty); //percentage duty
+void updateDC1(uint8_t prc_duty); //percentage duty
 
 
 

@@ -1,4 +1,4 @@
-main.d main.o: .././main.c \
+pwm_2/pwm_2.d pwm_2/pwm_2.o: ../pwm_2/pwm_2.c ../pwm_2/pwm_2.h \
  d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -9,12 +9,9 @@ main.d main.o: .././main.c \
  d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
  d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
- d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
- d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././pwm_1/pwm_1.h .././pwm_2/pwm_2.h .././pwm_0/pwm_0.h
+ d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
+
+../pwm_2/pwm_2.h:
 
 d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -37,17 +34,3 @@ d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\versio
 d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 
 d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
-
-d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
-
-d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
-
-d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-d:\microchip_studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
-
-.././pwm_1/pwm_1.h:
-
-.././pwm_2/pwm_2.h:
-
-.././pwm_0/pwm_0.h:

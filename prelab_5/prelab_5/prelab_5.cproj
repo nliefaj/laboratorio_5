@@ -30,15 +30,15 @@
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data xmlns="">
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.52.0" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -123,14 +123,28 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="pwm_0\pwm_0.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pwm_0\pwm_0.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="pwm_1\pwm_1.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="pwm_1\pwm_1.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="pwm_2\pwm_2.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pwm_2\pwm_2.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="pwm_0" />
+    <Folder Include="pwm_2" />
     <Folder Include="pwm_1" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

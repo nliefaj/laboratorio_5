@@ -4,5 +4,9 @@
 
 main.c
 
+pwm_0\pwm_0.c
+
 pwm_1\pwm_1.c
+
+pwm_2\pwm_2.c
 
